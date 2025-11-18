@@ -1,0 +1,25 @@
+[agent]
+expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "info"
+
+[[workflows.workflow]]
+name = "info"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cat README.md && echo \"\" && echo \"========================================\" && echo \"ВАЖНО: Это десктоп-приложение!\" && echo \"Для запуска скомпилируйте на своем ПК:\" && echo \"  go build -o CodeRewriteRunner.exe main.go\" && echo \"========================================\" && tail -f /dev/null"
+
+[workflows.workflow.metadata]
+outputType = "console"
